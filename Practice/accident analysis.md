@@ -1,24 +1,26 @@
 # Intro
 
-The UK has a dataset(https://data.gov.uk/dataset/road-accidents-safety-data) on vehicle accidents. Please dowload the "2014 All STATS19 data (accident, casualties and vehicle tables) for 2005 to 2014." Information on the variables can be found at the bottom of the page under additional links. In addition, the form which is used to record data by police officers can be found here(http://docs.adrn.ac.uk/888043/mrdoc/pdf/888043_stats19-road-accident-injury- statistics-report-form.pdf).
+This exercise is base on the following data set: (https://data.gov.uk/dataset/road-accidents-safety-data) on vehicle accidents.
+* "2014 All STATS19 data (accident, casualties and vehicle tables) for 2005 to 2014."
+* Information on the variables can be found at the bottom of the page under additional links. In addition, the form which is used to record data by police officers can be found here(http://docs.adrn.ac.uk/888043/mrdoc/pdf/888043_stats19-road-accident-injury- statistics-report-form.pdf).
 
-	cd "../Dropbox/Learn/Data Incubator/Challenge/Accidents data analysis"
-
-	import pandas as pd
-
-	accidents = pd.read_csv('Accidents0514.csv')
-	vehicles = pd.read_csv('Vehicles0514.csv')
-	casualties = pd.read_csv("Casualties0514.csv")
+```pyton
+import pandas as pd
+accidents = pd.read_csv('Accidents0514.csv')
+vehicles = pd.read_csv('Vehicles0514.csv')
+casualties = pd.read_csv("Casualties0514.csv")
+```
 
 # 1. Fractions
 What fraction of accidents occur in urban areas? Report the answer in decimal form.
 
 ## Answering with value_counts()
-accidents.Urban_or_Rural_Area.value_counts(normalize = True).iloc[0]
+```python
+accidents.Urban_or_Rural_Area.value_counts(normalize = True).iloc[0]```
 0.64265691086842169
 
 ## Answering with len()
-len(accidents['Urban_or_Rural_Area'][accidents['Urban_or_Rural_Area'] == 1]) / len(accidents['Urban_or_Rural_Area'])
+	len(accidents['Urban_or_Rural_Area'][accidents['Urban_or_Rural_Area'] == 1]) / len(accidents['Urban_or_Rural_Area'])
 0.6426569108684217
 
 ## Answering with count()
@@ -26,11 +28,11 @@ len(accidents['Urban_or_Rural_Area'][accidents['Urban_or_Rural_Area'] == 1]) / l
 0.64265691086842169
 
 ## count*()
-accidents.Urban_or_Rural_Area.count().div(accidents.Urban_or_Rural_Area.count()).iloc[0]
+	accidents.Urban_or_Rural_Area.count().div(accidents.Urban_or_Rural_Area.count()).iloc[0]
 0.64265691086842169
 
 ## Crosstab
-pd.crosstab(accidents.Urban_or_Rural_Area, columns='Urban_or_Rural_Area').div(accidents.Urban_or_Rural_Area.count()).iloc[0,0]
+	pd.crosstab(accidents.Urban_or_Rural_Area, columns='Urban_or_Rural_Area').div(accidents.Urban_or_Rural_Area.count()).iloc[0,0]
 0.64265691086842169
 
 
@@ -48,19 +50,19 @@ When is the most dangerous time to drive?
 
 
 ## Solving with value_counts
-(accidents.Time.str[:2][accidents.Accident_Severity == 1].value_counts() / accidents.Time.str[:2].value_counts()).max()
+	(accidents.Time.str[:2][accidents.Accident_Severity == 1].value_counts() / accidents.Time.str[:2].value_counts()).max()
 0.039486673247778874
 
 ## Solving with pd.crosstabs()
-pd.crosstab(accidents.Time.str[:2], columns = accidents.Accident_Severity, normalize = 'index').iloc[:,0].max()
+	pd.crosstab(accidents.Time.str[:2], columns = accidents.Accident_Severity, normalize = 'index').iloc[:,0].max()
 0.039486673247778874
 
 ## pivot_table
-accidents[['Time', 'Accident_Severity']].pivot_table(index = accidents.Time.str[:2], columns = 'Accident_Severity', aggfunc= 'count').apply(lambda x: x / x.sum(), axis = 1).iloc[:,0].max()
+	accidents[['Time', 'Accident_Severity']].pivot_table(index = accidents.Time.str[:2], columns = 'Accident_Severity', aggfunc= 'count').apply(lambda x: x / x.sum(), axis = 1).iloc[:,0].max()
 0.039486673247778874
 
 ## groupby
-accidents.Accident_Severity.groupby(by = [accidents.Time.str[:2], accidents.Accident_Severity]).count()
+	accidents.Accident_Severity.groupby(by = [accidents.Time.str[:2], accidents.Accident_Severity]).count()
 
 ## Enhancements
   * function asking for dimension and value and giving back its most frequent hour
@@ -68,7 +70,7 @@ accidents.Accident_Severity.groupby(by = [accidents.Time.str[:2], accidents.Acci
 # 3. Linear regression
 There appears to be a linear trend in the number of accidents that occur each year. What is that trend? Return the slope in units of increased number of accidents per year.
 
-import statsmodels.formula.api as sm
+	import statsmodels.formula.api as sm
 
 ## With every year
 	years = accidents['Date'].str[-4:]
@@ -160,9 +162,7 @@ Weather
 9	Unknown
 -1	Data missing or out of range
 
-
-cd "../Dropbox/Learn/Data Incubator/Challenge/Accidents data analysis"
-
+```python
 import pandas as pd
 
 accidents = pd.read_csv('Accidents0514.csv')
@@ -190,6 +190,7 @@ crosstab.index = ['No skid, etc', 'Skid or overturn', 'Column_total']
 freqs = crosstab / crosstab.iloc[-1,-1]
 
 ratio = freqs.loc['Skid or overturn', 'Rain or snow'] / freqs.loc['Skid or overturn', 'Fine']
+```
 
 ## Enhance
  * Review for the error
@@ -232,7 +233,6 @@ You can use `isin` instead of `... in ... for ...` comprehension; Also no need t
     rain_snow = df.Weather.isin(['rain', 'snow'])
     fine = df.Weather.eq('fine')
     skid = df.Skidding.isin(['skid', 'jackknife'])
-    ​
     (rain_snow & skid).sum()/(fine & skid).sum()
     # 3
 
@@ -277,7 +277,7 @@ code	label
 2	Serious
 3	Slight
 
-cd "C:\Users\andras\Dropbox\Learn\Data Incubator\Challenge\Accidents data analysis"
+```python
 import pandas as pd
 
 accidents = pd.read_csv('Accidents0514.csv')
@@ -296,6 +296,7 @@ crosstab.columns = ['Fatal', 'Serious', 'Slight', 'All']
 fatality_rates = crosstab.div(crosstab.iloc[:, -1], axis = 'rows')
 
 fatality_rates.loc['Male', 'Fatal'] / fatality_rates.loc['Female', 'Fatal']
+```
 1.9538711859282092
 
 ## Enhance
@@ -305,16 +306,20 @@ fatality_rates.loc['Male', 'Fatal'] / fatality_rates.loc['Female', 'Fatal']
 https://stackoverflow.com/questions/47010032/in-pandas-how-to-calculate-the-relative-probabilities-of-values-of-a-column-giv
 Here they focus only on cars
 
+```python
 g = casualties.merge(vehicles, on='Accident_Index')\
         .query("Vehicle_Type == 'car' and Casualty_Severity == 'fatal'")\
         .groupby('Sex_Driver').Sex_Driver.count()
 
 g / g.sum()
+```
 
 ### Simpler
+```python
 vehicle = 'car'
 severity = 'fatal'
 query("Vehicle_Type == @vehicle and Casualty_Severity == @severity")
+```
 
 # 7. Funcitons,
 We can use the accident locations to estimate the areas of the police districts. Represent each as an ellipse with semi-axes given by a single standard deviation of the longitude and latitude. What is the area, in square kilometers, of the largest district measured in this manner?
@@ -375,15 +380,16 @@ code	label
 98	Dumfries and Galloway
 
 
-cd "C:\Users\andras\Dropbox\Learn\Data Incubator\Challenge\Accidents data analysis"
-
+```python
 import pandas as pd
 accidents = pd.read_csv('Accidents0514.csv')
+```
 
 ## Using groupby
-aggs = accidents[['Police_Force', 'Latitude', 'Longitude']].groupby('Police_Force').agg(['mean','std']).stack(level = 0).unstack(level = 1)
+	aggs = accidents[['Police_Force', 'Latitude', 'Longitude']].groupby('Police_Force').agg(['mean','std']).stack(level = 0).unstack(level = 1)
 
 ## Using pivot_tables
+```python
 polloc = accidents[['Police_Force', 'Longitude', 'Latitude']]
 means = polloc.pivot_table(index = ['Police_Force'], aggfunc= 'mean')
 stds = polloc.pivot_table(index = ['Police_Force'], aggfunc= 'std')
@@ -406,6 +412,7 @@ def pol_area(*arg):
     return area
 
 aggs.apply(lambda x: ellipse(*saxes(*x)), axis = 1).max()
+```
 19458.370872875956
 
 ## Enhance
@@ -419,8 +426,7 @@ Find the rate at which the number of accidents exponentially decays with age.
 
 How fast do the number of car accidents drop off with age?
 
-cd "C:\Users\andras\Dropbox\Learn\Data Incubator\Challenge\Accidents data analysis"
-
+```python
 import pandas as pd
 
 vehicles = pd.read_csv('Vehicles0514.csv')
@@ -430,4 +436,5 @@ age_freq = age.groupby(by = 'Age_of_Driver').agg('count')
 
 from scipy.stats import expon
 expon.fit(age_freq)[0]
+```
 -25.287191113338508

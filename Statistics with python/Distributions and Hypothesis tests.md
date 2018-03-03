@@ -105,10 +105,10 @@ Too small sample can lead to a study failure. In determining the sample size **p
 
 #### Bias
 Bias can have a number of sources
-* The selection of subjects.
-* The structure of the experiment
-* The measurement device.
-* The analysis of the data.
+* The selection of **subjects**.
+* The structure of the **experiment**
+* The **measurement** device.
+* The **analysis** of the data.
 
 #### Randomization
 * **Simple randomization**:  Robust against selection and accidental bias but the resulting group size can differ signiﬁcantly.

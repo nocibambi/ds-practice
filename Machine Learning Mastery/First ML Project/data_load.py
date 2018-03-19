@@ -35,15 +35,15 @@ print(dataset.groupby('class').size())
 # 4. Data visualization
 # 4.1. Univariate plots
 # Box diagrams
-dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False, figsize = (10, 5))
 plt.show()
 
 # Histograms of variables
-dataset.hist()
+dataset.hist(figsize = (10, 5))
 plt.show()
 
 # 4.2 Multivariate plot
-scatter_matrix(dataset)
+scatter_matrix(dataset, figsize = (10, 5))
 plt.show()
 
 # 5. Evaluating algorithms
@@ -60,7 +60,7 @@ validation_size = 0.20
 seed = 7
 X_train, X_validation, Y_train, Y_validation = \
     model_selection.train_test_split(X, Y, test_size=validation_size, \
-                                     random_state=seed)
+    random_state=seed)
 
 # 2. Set-up the test harness to use 10-fold cross validation.
 scoring = 'accuracy'
@@ -86,9 +86,19 @@ for name, model in models:
     print(msg)
 
 # 4. Select the best model.
-fig = plt.figure()
+fig = plt.figure(figsize = (10, 5))
 fig.suptitle('Algorithm Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(results)
 ax.set_xticklabels(names)
 plt.show()
+
+# 5. Making predictions
+# Making predictins on the validation dataset
+knn = KNeighborsClassifier()
+knn.fit(X_train, Y_train)
+predictions = knn.predict(X_validation)
+
+print(accuracy_score(Y_validation, predictions))
+print(confusion_matrix(Y_validation, predictions))
+print(classification_report(Y_validation, predictions))

@@ -13,7 +13,7 @@ from sklearn.linear_model import LogisticRegression
 
 # Loading and defining the data
 url = "https://goo.gl/bDdBiA"
-names = ['preg', 'plas', 'pres', 'skin', 'test', 'mass', 'pedi', 'age', 'clas']
+names = ['preg', 'plas', 'pres', 'skin', 'test', 'mass', 'pedi', 'age', 'class']
 df = read_csv(url, names=names)
 array = df.values
 
@@ -21,8 +21,7 @@ array = df.values
 X = array[:,0:8]
 Y = array[:,8]
 
-
-kfold = KFold(n_splits=10, random_state=7)
+kfold = KFold(n_splits=10, random_state=7) # Splits data into 10 folds, with a random seed 7
 model = LogisticRegression()
 results = cross_val_score(model, X, Y, cv=kfold)
 print("Accuracy: %3f%% (%.3f%%)" % (results.mean()*100.0, results.std()*100.0))

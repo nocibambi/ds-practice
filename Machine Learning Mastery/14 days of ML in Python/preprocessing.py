@@ -14,6 +14,8 @@ import numpy as np
 url = "https://goo.gl/bDdBiA"
 names = ['preg', 'plas', 'pres', 'skin', 'test', 'mass', 'pedi', 'age', 'class']
 df = pd.read_csv(url, names=names)
+print("Original dataframe from csv:\n{}\n".format(df.head()))
+
 array = df.values
 
 # Separating the target
@@ -22,6 +24,6 @@ Y = array[:,8]
 
 # Standardizing the data (mean 0, std1)
 scaler = StandardScaler().fit(X)
-rescaledX = scaler.transfrom(X)
+rescaledX = scaler.transform(X)
 np.set_printoptions(precision=3)
-print(rescaledX[0:5,:])
+print("Rescaled training data array:\n{}".format(rescaledX[0:5,:]))

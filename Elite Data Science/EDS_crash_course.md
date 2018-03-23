@@ -106,3 +106,81 @@ Creating new input features from existing ones.
 As a result you transformed the original raw data into **Analytical Base Table (ABS)**.
 
 Not all the engineered features has to be useful. Some machine learning algorithms have **built-in feature selection**, that is, they can automatically select the best features.
+
+## 5. Algorithms
+Linear regression is perhaps the most easily usable model widely applied in research and reporting. Howerver it has some problems which make it a very bad tool for prediction.
+
+### Flaws of Linear Regression
+1. **Overfitting data**: the regression model learns all the features (including the noise) but not the underlying connections. Accordingly it will not be able to predict new data.
+2. Inability to predict **non-linear** relations.
+
+### Regularization
+The main method to avoid overfitting is to artificially constrain the model features by dampening large coefficients or dropping features entirely.
+1. **Lasso regression**:
+    * Dropping whole features or weaening them to zero coefficients.
+    * Works with absolute sizes of coefficients.
+    * Offers automatic feature selection.
+2. **Ridge regression** ('feature shrinkage')
+    * Weakening features' weight close to zero.
+    * Works with squared size of coefficients.
+3. **Elastic net**: Combination of the Ridge and Lasso.
+    * The ratio of the two methods and the overall strength can be tuned.
+
+### Decision trees
+Decision trees are good predicting non-linear relationship. However they are very prone to overlearning the data (by making a leave for each observation). In order to use them effectively, the need to be constrained or combined with other models.
+
+### Ensembles
+It is very common that data scientists use different models so they can overcome each other's limitations.
+1. **Bagging**: Developing a few 'strong' (unconstrained) models and smoothing out their issues.
+2. **Boosting**: Developing many 'weak' (i.e. constrained) models learning from the mistakes of the previous ones and combining them.
+
+#### Ensemble decision tree models
+Decision trees are often used in ensembles.
+1. **Random forest**
+    * Very usable, one-shot model
+    * Based on randomization:
+        - Feature selection: Choosing from a random sample of features to decide upon
+        - Resampling: Being trained only on a random sample of observations.
+2. **Boosted tree**: sequence of week constrained decision trees
+    * Each tree has an allowed maximum depth
+    * Each tree learns from the previous tress' mistakes
+    * Have the highest performance ceelings, but they need lots of complicated tuning.
+
+## 6. Model training
+
+### Split dataset
+Because our data is a limited resource we should use it very wisely, so we separate out a part of it.
+
+Before everything we should split our data into training and testing sets. After we have trained the model(s) on the training set we can apply it on the testing set.
+
+### Hyperparameters
+Hyperparameters (e.g. penalty strength, number of trees) are parameters which we cannot tell from the date itself, and which are not model-specific. We need to decide about the hyperparameters before fitting the model.
+
+### Cross-validation
+During cross-validation we train models on parts of the training set and test them on the remaining part. We combine them multiple times so we basically traing through the whole training set.
+
+The steps of the most common, 10-fold method:
+1. Randomly splitting the training data into 10 equal size.
+2. Training the model on 9 folds.
+3. Testing the trained model on the 10th fold.
+4. Executing 2-4. steps on the next fold.
+5. Taking the average of the 10 performances, the **cross-validated score**.
+
+This is a good method to avoid overfitting.
+
+### Fitting and tuning models
+With all the model types we run the cross-validate loops with all the hyperparameter combinations we want to try out.
+
+Based on the resulting cross validation scores we rank the model-hyperparameter combinations, pick those which we want to use on the test data set and **train them on the whole training set**.
+
+### Winner selection
+We apply the chosen model-hyperparameter combination on the testing data set and run various performance measures on them.
+
+* Regression: Mean Squared Error or Mean Absolute Error (MAE)
+* Classification: Area under ROC curve (AUROC)
+
+Questions to pick the winning model:
+1. Performance
+2. Robustness: performing well across various metrics
+3. Consistency: cross-validated score on the training set.
+4. Business usability: soling the original business problem.

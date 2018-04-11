@@ -60,18 +60,30 @@ femcredrat.max()
 statorg = nat.loc[:,['State','Organization legal name','Group Practice PAC ID']]
 
 ## Checking the reason behind the difference between the name and id counts
-statorg[(statorg['Organization legal name'].isnull() == False) & (statorg['Group Practice PAC ID'].isnull() == True)].count()
-statorg[(statorg['Organization legal name'].isnull() == True) & (statorg['Group Practice PAC ID'].isnull() == False)].count()
-## There is 2609 organizations without a name but being registered with an id, therefore, we will use that id from now on.
+statorg[(statorg['Organization legal name'].isnull() == False) &
+        (statorg['Group Practice PAC ID'].isnull() == True)].count()
+
+statorg[(statorg['Organization legal name'].isnull() == True) &
+        (statorg['Group Practice PAC ID'].isnull() == False)].count()
+
+## There is 2609 organizations without a name but being registered with an id,
+# therefore, we will use that id from now on.
 statorg = statorg.iloc[:,[0,2]]
 ## There is no state with less than 10 facilities
 
 # Standard deviation of measure averages
-## All measure performance rates are on a 0 to 100 scale. Compute the average measure performance rate for each clinician (across all measures). Consider the distribution of these average rates for individuals who have at least 10. What is the standard deviation of that distribution?
+# All measure performance rates are on a 0 to 100 scale. Compute the average
+# measure performance rate for each clinician (across all measures).
+# Consider the distribution of these average rates for individuals who have at
+# least 10. What is the standard deviation of that distribution?
 
 ## Concatenating the two performance tables
 permen = pd.concat([ind, perf], join = 'inner')
-permen.rename(columns = {"PAC ID" : "PACID", "Measure Identifier": "MesId", "Inverse Measure": "InvMe", "Measure Performance Rate" : "MPR"}, inplace = True)
+permen.rename(columns = {"PAC ID" : "PACID",
+                         "Measure Identifier": "MesId",
+                         "Inverse Measure": "InvMe",
+                         "Measure Performance Rate" : "MPR"}, 
+             inplace = True)
 
 ## Finding the inverse measures and turning them into negative values
 permen['MPR'] = permen['MPR'].where(permen['InvMe'] == 'N', -permen['MPR'])
@@ -88,7 +100,7 @@ credper = pd.merge(sample, nat[['PACID', 'Credential']], how = 'left', left_inde
 
 credperme = credper.groupby(by= 'Credential').mean()
 abs(credperme['MPR']['MD'] - credperme['MPR']['NP'])
-## The absolute difference between MD and NP performance means is 7.3000968904461132
+## The absolute difference between MD and NP performance means is 7.3000968904461132`
 
 # Performance rates vs. graduation year
 ## What is the p-value of the linear regression of performance rates vs. graduation year? Consider the average performance rates (across all measures) of every doctor (MD) who graduated between 1973 and 2003 (inclusive). Only consider doctors who have at least 10 rates. For each graduation year, compute the mean of these rates. Assuming the relationship between graduation year and performance rates is linear, find the slope and determine if the relationship is significant. Return the p-value of the linear regression.

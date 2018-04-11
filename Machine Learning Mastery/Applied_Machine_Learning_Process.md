@@ -283,9 +283,24 @@ By using 10 fold cross validation, running a test on 10-20 algorithms.
 Keeping statistical significance in focus is still crucial here.
 
 ## 5. Present Results
+### Reporting the model
+Complete projects with a report on results to accelerate learning in the field and elicit feedback.
+
+Themes:
 * Context
 * Problem
 * Solution
 * Finding
 * Limitations
 * Conclusion
+
+### Operationalize
+
+1. Algorithm Implementation
+This often happens with existing research libraries, but these are often written for a general problem. Consider locating a production-level library that supports the wished method. May need to retune the new library.
+
+2. Model Tests
+Write automated tests to verify that the model works repeatedly and for data preparation steps.
+
+3. Tracking
+Create a performance monitoring infrastructure which raises an alarms under a specific accuracy value.

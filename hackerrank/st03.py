@@ -1,8 +1,12 @@
 # Solving with pandas
 # import pandas as pd
 
-i1 = "11"
-i2 = "3 7 8 5 12 19 14 13 18 24 21"
+input1 = "11"
+input2 = "3 7 8 5 12 19 14 13 18 24 21"
+
+i1 = int(input1)
+i2 = list(map(int, input2.split()))
+i3 = list(map(int, input3.split()))
 
 # size = int(i1)
 # numbers = pd.Series(map(int, i2.split()))
@@ -13,6 +17,8 @@ i2 = "3 7 8 5 12 19 14 13 18 24 21"
 # print(q1.median())
 # print(numbers.median())
 # print(q3.median())
+
+
 
 size = int(i1)
 numbers = sorted(list(map(int, i2.split())))

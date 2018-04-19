@@ -175,7 +175,9 @@ The two main types:
 * Poission: unlimited (number of people to know)
 
 ### Bernoulli distributions
-It has only two states.
+**Bernoulli random variable**:
+* sample space have only two points
+* $ f(x) =  p^x (1 - p)^{1-x}, \quad \text{for} \quad x \in \{0, 1\} $
 * The most simple univariate distribution, and the basis of the binomial.
 
 ```math
@@ -198,6 +200,26 @@ trials = bern_dist.rvs(10) # 'rvs' stands for random variates
 ```
 
 ### Binomial distributions
+**Binomial experiment**: a statistical experiment with the following properties:
+* n repeated independent trials
+* the outcomes are binary (e.g. success or failure)
+
+**Binomial distribution**
+* $ n$: number of trials
+* $ x$: number of successes
+* $ p$: probability of 'success' of one trial
+* $ q$: prob of a 'failure' trial
+* $ b(x, n, p) $
+
+**binomial probability**: having exactly x successes out of n trials
+
+**binomial random variable**: number of successes, x, out of n trials
+
+
+```math
+b(x, n, p) = \frac {n!} {x! (n - x)!}  p^x q^{n-x}
+```
+
 "How many trials will succeed from a given number?"
 * e.g. how many people in a room have green eyes?
 
@@ -208,6 +230,23 @@ trials = bern_dist.rvs(10) # 'rvs' stands for random variates
 P[X = k] = p^k (1 - p)^{n - k} \qquad 0 \le p \le, \qquad n \in N
 ```
 
+Using the standard python library:
+```py
+from math import factorial
+
+# Or creating the factorial function:
+def factor(n):
+    factored = 1
+    for i in (range(1, n + 1)):
+        factored *= i
+
+def bin_dist(x, n, p):
+    n_choose_x = factorial(n) / (factorial(x) * factorial(n - x))
+    bin_prob =  n_choose_x * p ** x * (1 - p) ** (n - x)
+    return bin_prob
+```
+
+Using python `stats` library:
 ```python
 from scipy import stats
 import numpy as np

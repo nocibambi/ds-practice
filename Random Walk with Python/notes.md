@@ -1,0 +1,13 @@
+# Links
+* https://www.youtube.com/watch?v=BfS2H1y6tzQ
+* https://plot.ly/python/random-walk/
+* https://www.geeksforgeeks.org/random-walk-implementation-python/
+* http://www.instructables.com/id/Python-modelling-of-the-Random-walk/
+* https://stackoverflow.com/search?q=%22random+walk%22+python+probability
+* https://machinelearningmastery.com/gentle-introduction-random-walk-times-series-forecasting-python/
+* https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/
+* https://stackoverflow.com/questions/17322041/visualizing-a-2d-random-walk-in-python
+* https://stackoverflow.com/questions/23833682/simple-random-walk
+* https://stackoverflow.com/questions/35410413/random-walk-in-python
+* https://stackoverflow.com/questions/46393491/simulating-a-random-walk-in-python
+* https://stackoverflow.com/questions/9421928/another-simple-random-walk-simulation-using-pythontwo-dimensional

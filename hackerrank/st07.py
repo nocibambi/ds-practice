@@ -1,4 +1,6 @@
-# Task: In a single toss of 2 fair (evenly-weighted) six-sided dice, find the probability that the values rolled by each die will be different and the two dice have a sum of 6.
+# Task: In a single toss of 2 fair (evenly-weighted) six-sided dice, find the
+# probability that the values rolled by each die will be different and
+# the two dice have a sum of 6.
 
 dice = [1, 2, 3, 4, 5, 6]
 

@@ -18,26 +18,3 @@ array([[ 0,  1,  2,  3],
        [ 4,  5,  6,  7],
        [ 8,  9, 10, 11],
        [12,  0,  1,  2]], dtype=int32)
-
-# Vectorized solutions
-* https://softwareengineering.stackexchange.com/questions/254475/how-do-i-move-away-from-the-for-loop-school-of-thought
-* https://stackoverflow.com/questions/17792077/vectorizing-for-loops-numpy
-* http://stupidpythonideas.blogspot.hu/2015/09/going-faster-with-numpy.html
-* http://www.jesshamrick.com/2012/04/29/the-demise-of-for-loops/
-* https://hackernoon.com/speeding-up-your-code-2-vectorizing-the-loops-with-numpy-e380e939bed3
-* https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6
-* https://datascience.blog.wzb.eu/2018/02/02/vectorization-and-parallelization-in-python-with-numpy-and-pandas/
-* https://stackoverflow.com/questions/46959044/how-to-calculate-the-probability-mass-function-of-a-random-variable-modulo-n-wh
-
-# Memoization
-https://www.youtube.com/watch?v=Qk0zUZW-U_M
-https://www.python-course.eu/python3_memoization.php
-
-# Numpy tutorials
-* https://www.datacamp.com/community/tutorials/python-numpy-tutorial
-* https://www.dataquest.io/blog/numpy-tutorial-python/
-* https://www.labri.fr/perso/nrougier/teaching/numpy/numpy.html
-
-# Read
-* https://towardsdatascience.com/why-you-should-forget-for-loop-for-data-science-code-and-embrace-vectorization-696632622d5f
-* https://towardsdatascience.com/data-science-with-python-turn-your-conditional-loops-to-numpy-vectors-9484ff9c622e

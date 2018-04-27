@@ -1,34 +1,38 @@
 # Numpy and pandas
 * `df1._data` allows to see the datablocks stored for that particular dataframe
-* any textual data column has the 'object' datatype and therefore is natot effective to use
+* any textual data column has the 'object' datatype and therefore is not effective to use
 
 # Pandas and postresql
 * pandas is always faster sometimes 5-10 times
-* pandas stores the data in the memory which can a constraining factor very fast
+* pandas stores the data in the memory which however can be a constraining factor very fast as the data grows
 
 # Pandas and excel
 ## Filtering:
 1. creating a boolean index for the conditions
 2. applying the indices on the original dataset
+
+in code:
 ```py
 IX = sections['Section'] == 'A'  # Boolean (True/False) indices or rows that met our filtering criteria
 sections[IX]  # use the Boolean indices to access rows
 ```
+
 ## Pivot table/aggregated values
 ```py
 student_data.groupby('Section').agg({'Exam 1 Score':['max', 'mean'], 'Exam 2 Score': ['max', 'min']})
 ```
 # Scikit-learn vs statsmodel
 * scikit-learn is more easy to use, but hides most of the stats behind the models
-* for more serious stat it is statsmodels
-
+* for more serious stat analysis we might want to use statsmodels
 
 # Vectorization
 Calculating dot product with numpy.
 ```py
 import numpy as np
+
 x = np.random.randn(1000000)
 y = np.random.randn(1000000)
+
 %timeit sum(x[i] * y[i] for i in range(len(x)))
 %timeit np.dot(x, y)
 ```

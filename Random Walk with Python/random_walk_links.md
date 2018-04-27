@@ -9,11 +9,6 @@
 * https://stackoverflow.com/questions/46393491/simulating-a-random-walk-in-python
 * https://stackoverflow.com/questions/9421928/another-simple-random-walk-simulation-using-pythontwo-dimensional
 
-## Processed
-* https://www.youtube.com/watch?v=BfS2H1y6tzQ
-* https://www.geeksforgeeks.org/random-walk-implementation-python/
-* http://www.instructables.com/id/Python-modelling-of-the-Random-walk/
-* https://stackoverflow.com/search?q=%22random+walk%22+python+probability
 
 ## Probability of walk paths/trees/networks/grids
 https://www.youtube.com/watch?v=_8qiF6HzdNA
@@ -27,3 +22,9 @@ https://pdfs.semanticscholar.org/d5ab/066a05b98c23aa215e4871d81110760fab33.pdf
 https://projecteuclid.org/download/pdf_1/euclid.ejp/1464816809
 https://www.quora.com/How-do-I-solve-the-drunkards-walk-or-random-walk-simulation-using-Python-language
 https://www.safaribooksonline.com/library/view/python-for-data/9781449323592/ch04.html
+
+## Processed
+* https://www.youtube.com/watch?v=BfS2H1y6tzQ
+* https://www.geeksforgeeks.org/random-walk-implementation-python/
+* http://www.instructables.com/id/Python-modelling-of-the-Random-walk/
+* https://stackoverflow.com/search?q=%22random+walk%22+python+probability

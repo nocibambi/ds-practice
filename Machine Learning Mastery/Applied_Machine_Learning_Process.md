@@ -222,7 +222,7 @@ From a general date time format we can decompose features for, for instance, the
 
 Similar approach to time of week, time of month, seasonality.
 
-##### 3. Reframing Numarical Quantities
+##### 3. Reframing Numerical Quantities
 Transforming numerical data into a new unit or decomposing it into rate/amount components.
 
 Weight attribute (in 'kg.gramm' format)

@@ -2,8 +2,6 @@
 - [ ] printing timeit results from a file.
 
 # Pandas
-* https://campus.datacamp.com/courses/manipulating-dataframes-with-pandas/extracting-and-transforming-data?ex=16#skiponboarding
-* https://www.datascience.com/blog/straightening-loops-how-to-vectorize-data-aggregation-with-pandas-and-numpy/
 * https://jakevdp.github.io/PythonDataScienceHandbook/03.12-performance-eval-and-query.html
 * https://tomaugspurger.github.io/modern-4-performance
 * https://www.youtube.com/watch?v=hvSEZxcH9PM
@@ -19,6 +17,8 @@
   * https://www.labri.fr/perso/nrougier/teaching/numpy/numpy.html
 
 # Vectorized solutions
+* https://campus.datacamp.com/courses/manipulating-dataframes-with-pandas/extracting-and-transforming-data?ex=16#skiponboarding
+* https://www.datascience.com/blog/straightening-loops-how-to-vectorize-data-aggregation-with-pandas-and-numpy/
 * https://softwareengineering.stackexchange.com/questions/254475/how-do-i-move-away-from-the-for-loop-school-of-thought
 * https://stackoverflow.com/questions/17792077/vectorizing-for-loops-numpy
 * http://stupidpythonideas.blogspot.hu/2015/09/going-faster-with-numpy.html
@@ -33,10 +33,6 @@
 * https://blog.godatadriven.com/the-performance-impact-of-vectorized-operations.html
 * https://stackoverflow.com/questions/27575854/vectorizing-a-function-in-pandas
 * https://stackoverflow.com/questions/48777345/vectorized-random-walk-in-python-with-boundaries
-
-# Memoization
-https://www.youtube.com/watch?v=Qk0zUZW-U_M
-https://www.python-course.eu/python3_memoization.php
 
 # Data science python performance
 * http://dataconomy.com/2017/07/big-data-numpy-numba-python/

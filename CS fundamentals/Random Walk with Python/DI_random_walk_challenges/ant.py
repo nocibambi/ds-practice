@@ -1,4 +1,7 @@
 # Q1: An ant is on a rectangular grid with southwest-most point (0, 0) and northeast-most point (n x m). Starting at (0, 0), each time, the ant travels along a path walking north or east by a unit length on the grid with equal probability until it reaches (n, m). Define the deviation of a D path (from the straight path) as max(x/m - y/n, y/n - x/m) for all points (x, y) along the path.
+# import timeit
+import time
+t0 = time.time()
 import numpy as np
 
 def makegrid(shape):
@@ -39,7 +42,7 @@ def path(grid, shape):
         grid[cord[0],cord[1]] = 1
         cords = np.vstack((cords,cord))
 
-    print("grid: {}".format(grid))
+    # print("grid: {}".format(grid)))
     return cords, D
 
 def simulate(N, shape, condprob):
@@ -62,7 +65,7 @@ def simulate(N, shape, condprob):
                 freq += 1
 
     if cond == 0:
-        cpob = 0
+        cprob = 0
     else:
         cprob = freq/cond
 
@@ -75,14 +78,18 @@ def simulate(N, shape, condprob):
 #What is the conditional probability that D is greater than 0.6 given that it is greater than
 #0.2 when m = 11 and  n = 7?
 #1.234567890
-trials = 1
+trials = 100000
 cond_prob_par = (0.6, 0.2)
+shape1 = (11, 7)
 
-mean, std, prob = simulate(trials, (11, 7), cond_prob_par)
+mean, std, prob = simulate(trials, shape1, cond_prob_par)
 print("""\nsimulate: {} ({})
-         condprop: {}""".format(round(mean, 10),
-                                round(std, 10),
-                                round(prob, 10)))
+      condprop: {}""".format(round(mean, 10),
+                             round(std, 10),
+                             round(prob, 10)))
+
+
+
 
 #print("On a m = 11, n = 7 grid, and based on 100 000 simulations: 0.4650068831 (0.1599357116), condprop: 0.1953154438")
 
@@ -94,10 +101,11 @@ print("""\nsimulate: {} ({})
 # 0.2 when m = 23 and n = 31?
 #0.9876543210
 
-mean, std, prob = simulate(trials, (23, 31), cond_prob_par)
-print("""\nsimulate: {} ({})
-         condprob: {}""".format(round(mean, 10),
-                                round(std, 10),
-                                round(prob, 10)))
+# mean, std, prob = simulate(trials, (23, 31), cond_prob_par)
+# print("""\nsimulate: {} ({})
+         # condprob: {}""".format(round(mean, 10),
+                                # round(std, 10),
+                                # round(prob, 10)))
 
 #print("On a m = 23, n = 31 grid, and based on 100 000 simulations: 0.3416129313 (0.1323430039), condprob: 0.0529353234")
+print("Duration of the program: {}".format(time.time() - t0))

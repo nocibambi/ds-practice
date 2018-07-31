@@ -1,4 +1,6 @@
 # Q1: An ant is on a rectangular grid with southwest-most point (0, 0) and northeast-most point (n x m). Starting at (0, 0), each time, the ant travels along a path walking north or east by a unit length on the grid with equal probability until it reaches (n, m). Define the deviation of a D path (from the straight path) as max(x/m - y/n, y/n - x/m) for all points (x, y) along the path.
+import time
+t0 = time.time()
 import numpy as np
 
 def path(arr, shape):
@@ -42,7 +44,6 @@ def simulate(trials, shape, cond):
     DSs = DS.std()
 
     cprob = np.where((DS > cond[1]).any(), np.count_nonzero(DS > cond[0]) / np.count_nonzero(DS > cond[1]), 0)
-
     cprob = float(cprob)
 
     return DSm, DSs, cprob, DS
@@ -55,6 +56,9 @@ def simulate(trials, shape, cond):
 #What is the conditional probability that D is greater than 0.6 given that it is greater than
 #0.2 when m = 11 and  n = 7?
 #1.234567890
+import time
+t0 = time.time()
+
 trials = 100000
 cond_prob_par = (0.6, 0.2)
 
@@ -84,3 +88,6 @@ print("""\nsimulate: {} ({})
 #                                 round(prob, 10)))
 
 #print("On a m = 23, n = 31 grid, and based on 100 000 simulations: 0.3416129313 (0.1323430039), condprob: 0.0529353234")
+
+import time
+t0 = time.time()

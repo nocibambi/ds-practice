@@ -1,10 +1,8 @@
-# The 5 main steps of the Applied Machine Learning Process
-
-## 1. Defining the Problem
+# 1. Defining the Problem
 Perhaps the most important part.
 
 Steps allowing to quickly overview the problem from different angles:
-### 1. What is the problem?
+## 1. What is the problem?
 1. Informal description, as you were explaining to a friend.
 2. Formal:
     1. Task: to be performed by the model
@@ -13,10 +11,10 @@ Steps allowing to quickly overview the problem from different angles:
     The machine 'learns' if 'P' increases.
 3. Assumptions
     * Create a list of them
-    * Useful if they can be tested with real data.
+        * Useful if they can be tested with real data.
     * Can also highlight issues in problem specification.
 4. Similar problems: can point out limitations, methods.
-### 2. Why this problem needs to be solved?
+## 2. Why this problem needs to be solved?
 1. Motivation: what need to be fulfilled?
 2. Solution benefits
     * Be clear that when will I know that I had acquired these benefits
@@ -24,26 +22,26 @@ Steps allowing to quickly overview the problem from different angles:
     * How will it be used?
     * What time of lifetime can we excpect?
     * How much maintenance will it need?
-### 3. How can we solve the problem?
+## 3. How can we solve the problem?
 * List step-by-step, how would I solve the problem manually?
 * This can bring up many very useful and surprising details.
 
-## 2. Data preparation
-* Summarizing attributes.
+# 2. Data preparation
+    - Summarizing attributes.
 * Visualizing the data with historgrams and scatter plots.
 * Describing the relationship between attributes.
 
-### Main parts
-#### 1. Selection
+## Main parts
+### 1. Selection
 Make assumption about the data I require to answer the problem and record these for later review.
 1. Defining what data is available
 2. What data is missing
 3. What data can be removed
-#### 2. Preprocessing
+### 2. Preprocessing
 1. Formatting
 2. Cleaning
 3. Sampling
-#### 3. Transformation (Feature Engineering)
+### 3. Transformation (Feature Engineering)
 1. Transforming data
     1. Standardization: mean of zero and standar deviation of one
     2. Scaling or normalization: scale into a zero to one range
@@ -62,7 +60,7 @@ Make assumption about the data I require to answer the problem and record these 
     3. Remove correlated attributes
 3. Decomposing attributes
 
-### Outlier analysis
+## Outlier analysis
 * **Extreme Value Analysis**: Determine the statistical tails of the underlying distribution of the data (e.g. z-scores on univariate data).
 * **Probabilistic and Statistical Models**: Determine unlikely instances from a probabilistic model of the data. For example, gaussian mixture models optimized using expectation-maximization.
 * **Linear Models**: Projection methods that model the data into lower dimensions using linear correlations. For example, principle component analysis and data with large residual errors may be outliers.
@@ -72,12 +70,12 @@ Make assumption about the data I require to answer the problem and record these 
 
 [More about this](https://machinelearningmastery.com/how-to-identify-outliers-in-your-data/)
 
-### Rebalancing datasets
+## Rebalancing datasets
 In classification problems, when some classes are overrepresented in the dataset we say that it is **inbalanced**. It is sometimes common or, even more, expected (e.g. fraudulent transactions, customer churn).
 
 **Accuracy paradox**: when you have great accuracy but it refers only to a single (or a small set) of the available classes.
 
-#### Possible solutions
+### Possible solutions
 * Collect more data
 * Changing performance **metrics**: there are [other measures](http://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/) beyond model accuracy:
     - **Confusion Matrix**: Showing correct predictions (the diagonal) and the types of incorrect predictions made.
@@ -116,7 +114,7 @@ In classification problems, when some classes are overrepresented in the dataset
         - Use a One Class Classifier and treat the problem like outlier detection
         - Resample the unbalanced training set into several balanced sets and run an ensemble of classifiers on them.
 
-### Feature Engineering
+## Feature Engineering
 Data consists of examples/cases (rows) and attributes/dimensions (columns).
 A possible definition for feature: **'meaningful attribute'.**
 
@@ -124,7 +122,7 @@ The prediction accuracy can depend on many things, but sometimes even weak model
 
 Feature engineering is a representational problem and requires to turning inputs into something the algorithm understands.
 
-#### The importance of individual features
+### The importance of individual features
 Features can be ordered numerically by various methods
 * Correlation with the target variable
     - Correlation coefficients
@@ -134,12 +132,12 @@ Features can be ordered numerically by various methods
     - Random Forest
     - Gradient Booster Machines
 
-#### Feature Extraction
+### Feature Extraction
 Automatic dimension reduction trying to produce a more manageable shape.
 * Principal Component Analysis
 * Tabular data: Unsupervised clustering
 
-#### Feature Selection
+### Feature Selection
 Feature selection is part of feature engineering and it is the automatic selection of useful features/attributes/variable. It is not dimension reduction, but works rather as filterig out unnecessary features.
 
 Feature selection types
@@ -156,7 +154,7 @@ Feature selection types
 Danger of overfitting with feature selection
 If we implement feature selection before modeling it will introduce bias into the validation mechanism. Accordingly the feature selection should be integral of the cross-validation loop.
 
-##### Feature selection Checklist
+#### Feature selection Checklist
 1. Do we have domain knowledge so we can generate features manually?
 2. Are features commensurate, or need normalization?
 3. Might there be interdependence between the features? Create conjunctive/product of features.
@@ -176,10 +174,10 @@ If we can  match or improve performance with a smaller subset we should use that
     5. linear and non-linear predictors.
 10. Do we want a stable solution? Resample the data and redo the analysis for several bootstraps.
 
-#### Feature Construction
+### Feature Construction
 Manual and proactive data aggregation and reorganization. Hard, messy and is an art.
 
-#### Feature Learning (representation learning)
+### Feature Learning (representation learning)
 Automatic recognition of features.
 
 There are some deep learning methods for that:
@@ -187,7 +185,7 @@ There are some deep learning methods for that:
 * Restriced Boltzmann machines
 However, these automatic representations are hard to comprehend and, therefore, they are also hard to transfer into other problems.
 
-#### The Feature Engineering process
+### The Feature Engineering process
 It is preceded by data selection and preprocessing, however, if new features come out from engineering we might turn back to these steps.
 
 > "It is an iterative process that interplays with data selection and model evaluation, again and again, until we run out of time on our problem."
@@ -201,8 +199,8 @@ It is important to have
 * a clearly defined problem so to know when to stop with each step.
 * a worked out, well understood and trusted test method to evaluate models on unseen data.
 
-#### General Examples
-##### 1. Decomposing categorical attributes
+### General Examples
+#### 1. Decomposing categorical attributes
 Three initial features:
     1. `Red`
     2. `Blue`
@@ -215,14 +213,14 @@ Possible new features:
 
 These could be used either instead of (linear model) or in addition to the color feature (decision tree).
 
-##### 2. Decompose Date-time features
+#### 2. Decompose Date-time features
 From a general date time format we can decompose features for, for instance, the time of day:
 * `Hour_of_day`
 * `Part_of_day`
 
 Similar approach to time of week, time of month, seasonality.
 
-##### 3. Reframing Numerical Quantities
+#### 3. Reframing Numerical Quantities
 Transforming numerical data into a new unit or decomposing it into rate/amount components.
 
 Weight attribute (in 'kg.gramm' format)
@@ -234,12 +232,12 @@ Exposing aggregated quantity's temporal structure. For instance, from num_custom
 * `purchases_summer`
 * `purchases_fall`, etc.
 
-#### Concrete examples
+### Concrete examples
 1. Student Test Performance prediction: specific temporal and other non-linearities in the problem structure were reduced to simple composite binary indicators [Link](http://pslcdatashop.org/KDDCup/workshop/papers/kdd2010ntu.pdf)
 2. Patient Admittance prediction (Heritage Health Price): There was many feature engineering involved. [Link](https://kaggle2.blob.core.windows.net/wiki-files/327/e4cd1d25-eca9-49ca-9593-b254a773fe03/Market%20Makers%20-%20Milestone%201%20Description%20V2%201.pdf)
 
 
-#### Feature Engineering resources
+### Feature Engineering resources
 * [Feature selection with python scikit-lear](http://machinelearningmastery.com/feature-selection-in-python-with-scikit-learn/)
 * [Feature engineering and 'intuition'](http://www.quora.com/What-is-the-intuitive-explanation-of-feature-engineering-in-machine-learning)
 * [Feature Construction as a messy artform](http://www.quora.com/How-valuable-do-you-think-feature-selection-is-in-machine-learning-Which-do-you-think-improves-accuracy-more-feature-selection-or-feature-engineering)
@@ -247,10 +245,10 @@ Exposing aggregated quantity's temporal structure. For instance, from num_custom
 * [Feature Engineering: How to perform feature engineering on the Titanic competition](http://trevorstephens.com/post/73461351896/titanic-getting-started-with-r-part-4-feature)
 * [... and there are more links in the article](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/)
 
-### Data leakage
+## Data leakage
 Data leakage is when we use information outside of the data when creating our model. It often provides 'too good to be true' prediction results. It is usually a problem of complex datasets.
 
-#### 1. Data preparation within cross-validation folds
+### 1. Data preparation within cross-validation folds
 * Doing the following tasks before cross-validation is practically leads to data-leakege:
     - Feature selection
     - Outlier removal
@@ -260,30 +258,30 @@ Data leakage is when we use information outside of the data when creating our mo
 * Instead, execute these tasks based on each fold within each cycle.
 * Python Scikit-learn's [Pipe package](http://machinelearningmastery.com/automate-machine-learning-workflows-pipelines-python-scikit-learn/) helps to do this.
 
-#### 2. Holding back a validation dataset for sanity check
+### 2. Holding back a validation dataset for sanity check
 Separate out a validation dataset from the training set and store it away, then evaluate the final model on it.
 
-#### Further tips to prevent data leakage
+### Further tips to prevent data leakage
 * **Temporal Cutoff**: Remove all data just prior to the event of interest, focusing on the time you learned about a fact or observation rather than the time the observation occurred.
 * **Add Noise**: Add random noise to input data to try and smooth out the effects of possibly leaking variables.
 * Remove Leaky Variables: Evaluate simple **rule based models** line **OneR** using variables like account numbers and IDs.
 
-## 3. Spot Check Algorithms
+# 3. Spot Check Algorithms
 By using 10 fold cross validation, running a test on 10-20 algorithms.
 * Collecting mean and standard deviation on each.
 * Running statistical significance tests.
 * Using box plots to visualize the accuracies of algorithm-dataset combinations.
 
 
-## 4. Improve Results
+# 4. Improve Results
 * Algorithm tuning: Trying to find the best models in the parameter space. Running sensitivity analysis on the parameters of the selected algorithms.
 * Designing and running ensemble methods
 * Extreme feature engineering: attribute decomposition and aggregation.
 
 Keeping statistical significance in focus is still crucial here.
 
-## 5. Present Results
-### Reporting the model
+# 5. Present Results
+## Reporting the model
 Complete projects with a report on results to accelerate learning in the field and elicit feedback.
 
 Themes:
@@ -294,7 +292,7 @@ Themes:
 * Limitations
 * Conclusion
 
-### Operationalize
+## Operationalize
 
 1. Algorithm Implementation
 This often happens with existing research libraries, but these are often written for a general problem. Consider locating a production-level library that supports the wished method. May need to retune the new library.
